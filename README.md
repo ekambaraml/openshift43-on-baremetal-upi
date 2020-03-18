@@ -1,4 +1,4 @@
-# Deploying OpenShift 4.3 on a user provisioned baremetal infrastructure
+# Deploying OpenShift 4.3 on a user provisioned baremetal infrastructure on Air-gapped/Disconneted Environment
 
 
 
@@ -43,5 +43,40 @@ In this example, we are provisioning a single Baremetal server with the followin
 - [ ] 1 Gbps Port Speed
 
 - [ ] RedHat 7.x (64bit)
+
+
+#### 5. Bastion Host Preparation
+
+
+* 5.1 Install OCP 4.3 CLI
+
+  You need OpenShift 4.3 **oc** commandline CLI tool for deploying the 4.3 cluster. You can download the tool from the           Infrastructure Provider page on the RedHat OpenShift Cluster Manager site, navigate to the page for your installation type     and click Download Command-line Tools.
+  
+  - Save the file to your file system
+  
+  - Extract the compressed file
+  
+  - place it in a directory that is on your path
+  
+  You can test the setup by running the oc command
+  
+  ```
+  $ oc <command>
+  ```
+  
+
+* 5.2 Create a mirror registry
+
+  **Mirror registry** is created on Bastion Host for installation in a restricted Network. The Bastion host must have access     to the         internet to obtain the OCP 4.3 images from RedHat hosted registry(Quay.io) into this mirror repository. Also   this bastion     host that has access to both internet and to the target Cluster network where the Baremetal server in         provisioned.
+  
+  During the bootstrapping process of installation, the images must have the same digests no matter which repository they are   pulled from. To ensure that the release payload is identical, you mirror the images to your local repository.
+
+
+  
+
+
+
+
+
 
 ## TroubleShooting FAQ
