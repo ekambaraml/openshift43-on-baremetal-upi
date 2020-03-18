@@ -5,6 +5,10 @@
 
 ##  Architecture
 
+![Architecture](https://github.com/ekambaraml/openshift43-on-baremetal-upi/blob/master/images/ocp43-airgap-deployment-architecture-01.png)
+
+
+
 
 ## Deployment
 Steps to Deploying the OpenShift 4.3 on user provisioned baremetal infrastructure.
