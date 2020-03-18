@@ -46,9 +46,30 @@ In this example, we are provisioning a single Baremetal server with the followin
 
 
 #### 5. Bastion Host Preparation
+The following command steps are run in the Bastion Hosts.
+
+* 5.1 Create Directory structure
+
+```
+$ mkdir /repository/ocp43
+$ export OCP_BASE="/repository/ocp43"
+$ mkdir -p ${OCP_BASE}/{auth,certs,data,downloads}
+$ mkdir -p ${OCP_BASE}/downloads/{images,tools,secrets}
+```
+
+![BastionHostdirectory](https://github.com/ekambaraml/openshift43-on-baremetal-upi/blob/master/images/bastion-host-directory.png)
 
 
-* 5.1 Install OCP 4.3 CLI
+* 5.2 Install packages
+
+  During the install setup, we will require the following redhat packages. Install the packages on Bastion with the following   command.
+
+```
+  $ yum install -y jq openssl podman p7zip httpd-tools curl wget screen nmap telnet
+```
+
+
+* 5.3 Install OCP 4.3 CLI
 
   You need OpenShift 4.3 **oc** commandline CLI tool for deploying the 4.3 cluster. You can download the tool from the           Infrastructure Provider page on the RedHat OpenShift Cluster Manager site, navigate to the page for your installation type     and click Download Command-line Tools.
   
@@ -65,7 +86,7 @@ In this example, we are provisioning a single Baremetal server with the followin
   ```
   
 
-* 5.2 Create a mirror registry
+* 5.4 Create a mirror registry
 
   **Mirror registry** is created on Bastion Host for installation in a restricted Network. The Bastion host must have access     to the         internet to obtain the OCP 4.3 images from RedHat hosted registry(Quay.io) into this mirror repository. Also   this bastion     host that has access to both internet and to the target Cluster network where the Baremetal server in         provisioned.
   
