@@ -1,10 +1,13 @@
-# openshift43-on-baremetal-upi
-OpenShift 4.3 on User Provisioned Baremetal Infrastructure
+# Deploying OpenShift 4.3 on a user provisioned baremetal infrastructure
+
+
+
 
 ##  Architecture
 
+
 ## Deployment
-Steps to Deploying the OpenShift 4.3 on user provisioned Baremetal infrastructure.
+Steps to Deploying the OpenShift 4.3 on user provisioned baremetal infrastructure.
 
 ### - 1. Cluster sizing
 ### - 2. Hardware provisioning (Baremetal)
