@@ -28,4 +28,13 @@ Reference: https://linuxacademy.com/hands-on-lab/05a6ab84-4bb1-4bef-8ad7-b89da34
 5. Create a storage pool called oc-storage-pool using the node-storage volume group
    # virsh pool-define-as oc-storage-pool logical --source-name node-storage --target /dev/sdb /dev/sdc
      Pool oc-storage-pool defined
+     
+6. Start the storage pool
+   # virsh pool-start oc-storage-pool
+   Pool oc-storage-pool started
+   
+   # virsh pool-autostart oc-storage-pool
+   Pool oc-storage-pool marked as autostarted
+   
+
 ```
