@@ -1,6 +1,9 @@
 
 
 ### Storage  pool creation using the disks /dev/sdb, /dev/sdc
+
+Reference: https://linuxacademy.com/hands-on-lab/05a6ab84-4bb1-4bef-8ad7-b89da34a9c09/
+
 ```
 
 Create PV with existing disk
