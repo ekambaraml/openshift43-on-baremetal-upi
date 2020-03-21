@@ -45,3 +45,6 @@ Reference: https://linuxacademy.com/hands-on-lab/05a6ab84-4bb1-4bef-8ad7-b89da34
  # virsh pool-autostart oc-storage-pool
  Pool oc-storage-pool marked as autostarted
 
+virsh pool-list --all
+virsh pool-info  oc-storage-pool
+ 
