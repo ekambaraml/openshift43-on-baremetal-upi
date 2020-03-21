@@ -1,6 +1,6 @@
 
 
-### Storage  pool creation using the disks /dev/sdb, /dev/sdc
+### Storage  pool creation using the disks /dev/sdb
 
 Reference: https://linuxacademy.com/hands-on-lab/05a6ab84-4bb1-4bef-8ad7-b89da34a9c09/
 
@@ -12,23 +12,23 @@ Reference: https://linuxacademy.com/hands-on-lab/05a6ab84-4bb1-4bef-8ad7-b89da34
   ```
   
   # pvdisplay
-  # pvcreate /dev/sdb /dev/sdc
+  # pvcreate /dev/sdb 
   Device /dev/sdb excluded by a filter.
-  Device /dev/sdc excluded by a filter.
+
   
   ;; If any error or reusing partitioned disc, first Remove the partition and wipe
   # wipefs -a /dev/sdb
-  # wipefs -a /dev/sdc
+
   
   # pvcreate /dev/sdb /dev/sdc
   Physical volume "/dev/sdb" successfully created.
-  Physical volume "/dev/sdc" successfully created.
+
 
 ```
 
 ## 2. Create Volume Group
 ```
-  # vgcreate node-storage /dev/sdb /dev/sdc
+  # vgcreate node-storage /dev/sdb
   Volume group "node-storage" successfully created
 ```   
 
