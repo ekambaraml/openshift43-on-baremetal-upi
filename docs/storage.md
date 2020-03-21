@@ -20,7 +20,7 @@ Reference: https://linuxacademy.com/hands-on-lab/05a6ab84-4bb1-4bef-8ad7-b89da34
   # wipefs -a /dev/sdb
 
   
-  # pvcreate /dev/sdb /dev/sdc
+  # pvcreate /dev/sdb
   Physical volume "/dev/sdb" successfully created.
 
 
