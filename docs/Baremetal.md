@@ -1,16 +1,63 @@
 # Baremetal Server Provisioning
+https://developers.redhat.com/blog/2016/08/18/setting-up-kvm-on-rhel/
 
+
+
+
+
+
+#### Bring down the bridge 
+```
+# ip link set ocp down
+or
+# ifconfig ocp down
+```
+
+#### Delete the bridge
+```
+# ip link delete ocp type bridge
+```
 
 wget https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso
 wget https://mirrors.kernel.org/centos/7.4.1708/isos/x86_64/sha256sum.txt
 wget https://mirrors.edge.kernel.org/centos/7.7.1908/isos/x86_64/sha256sum.txt
+```
 
-$ virt-install --virt-type=kvm --name centos7 --ram 2048 --vcpus=1 --os-variant=centos7.0 \
---cdrom=/var/lib/libvirt/boot/CentOS-7-x86_64-Minimal-1908.iso --network=bridge=br0,model=virtio --graphics \
-vnc --disk path=/var/lib/libvirt/images/centos7.qcow2,size=40,bus=virtio,format=qcow2 \
---boot useserial=on 
+## 1. Preparing the Baremetal Server
 
+$ yum update
+$ yum install -y net-tools curl nano tree wget jq nfs-common cpu-checker
 
+$ grep -E 'svm|vmx' /proc/cpuinfo
+- vmx is for Intel processors
+- svm is for AMD processors
+
+$ lscpu | grep Virtualization
+Virtualization: VT-x
+
+$ yum install qemu-kvm libvirt libvirt-python libguestfs-tools virt-install
+
+$ systemctl enable libvirtd ; systemctl start libvirtd
+
+$lsmod | grep -i kvm
+
+$ brctl show
+$ virsh net-dumpxml default
+
+Setup virtual  network
+
+$ echo "BRIDGE=ocp4" >> /etc/sysconfig/network-scripts/ifcfg-bond0
+$ /etc/sysconfig/network-scripts/ifcfg-bond0
+
+DEVICE=bond0
+BOOTPROTO=none
+ONBOOT=yes
+USERCTL=no
+BONDING_OPTS="mode=4 miimon=100 downdelay=0 updelay=0 lacp_rate=fast xmit_hash_policy=1"
+IPADDR=10.148.168.144
+NETMASK=255.255.255.192
+NM_CONTROLLED=no
+BRIDGE=ocp4
 
 ### 1. Setup VM network
 
